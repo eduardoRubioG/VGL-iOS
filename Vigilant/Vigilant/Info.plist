@@ -66,5 +66,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSCameraUsageDescription</key>
+    <string>A preview of the camera's viewfinder</string>
 </dict>
 </plist>

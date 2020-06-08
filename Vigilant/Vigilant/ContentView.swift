@@ -22,6 +22,15 @@ struct ContentView: View {
                     }
                 }
                 .tag(0)
+            CameraViewController()
+                .edgesIgnoringSafeArea(.top)
+                .tabItem {
+                    VStack {
+                        Image("second")
+                        Text("Camera")
+                    }
+                }
+                .tag(1)
             Text("Second View")
                 .font(.title)
                 .tabItem {
@@ -30,7 +39,7 @@ struct ContentView: View {
                         Text("Second")
                     }
                 }
-                .tag(1)
+                .tag(2)
         }
     }
 }

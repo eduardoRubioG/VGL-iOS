@@ -13,6 +13,8 @@
 		B0FC3679248EB97100F34184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FC3678248EB97100F34184 /* Assets.xcassets */; };
 		B0FC367C248EB97100F34184 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FC367B248EB97100F34184 /* Preview Assets.xcassets */; };
 		B0FC367F248EB97100F34184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FC367D248EB97100F34184 /* LaunchScreen.storyboard */; };
+		B0FC3689248EBE4F00F34184 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC3688248EBE4F00F34184 /* CameraController.swift */; };
+		B0FC368B248EC36800F34184 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC368A248EC36800F34184 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B0FC367B248EB97100F34184 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B0FC367E248EB97100F34184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0FC3680248EB97100F34184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0FC3688248EBE4F00F34184 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		B0FC368A248EC36800F34184 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				B0FC367D248EB97100F34184 /* LaunchScreen.storyboard */,
 				B0FC3680248EB97100F34184 /* Info.plist */,
 				B0FC367A248EB97100F34184 /* Preview Content */,
+				B0FC3688248EBE4F00F34184 /* CameraController.swift */,
+				B0FC368A248EC36800F34184 /* CameraViewController.swift */,
 			);
 			path = Vigilant;
 			sourceTree = "<group>";
@@ -147,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0FC3673248EB96E00F34184 /* AppDelegate.swift in Sources */,
+				B0FC368B248EC36800F34184 /* CameraViewController.swift in Sources */,
 				B0FC3675248EB96E00F34184 /* SceneDelegate.swift in Sources */,
+				B0FC3689248EBE4F00F34184 /* CameraController.swift in Sources */,
 				B0FC3677248EB96E00F34184 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
