@@ -13,7 +13,10 @@ class CameraController: NSObject{
     //vars
     var captureSession: AVCaptureSession?
     var frontCamera: AVCaptureDevice?
+    var rearCamera: AVCaptureDevice?
+    var currentCameraPosition: CameraPosition?
     var frontCameraInput: AVCaptureDeviceInput?
+    var rearCameraInput: AVCaptureDeviceInput?
     var previewLayer: AVCaptureVideoPreviewLayer?
     
     enum CameraControllerError: Swift.Error {
@@ -25,7 +28,12 @@ class CameraController: NSObject{
        case unknown
     }
     
-    func prepare(completionHandler: @escaping (Error?) -> Void){
+    public enum CameraPosition {
+        case front
+        case rear
+    }
+    
+    /*func prepare(completionHandler: @escaping (Error?) -> Void){
         func createCaptureSession(){
             self.captureSession = AVCaptureSession()
         }
@@ -52,9 +60,57 @@ class CameraController: NSObject{
                
             captureSession.startRunning()
                
+        }*/
+    
+    func prepare(completionHandler: @escaping (Error?) -> Void) {
+        func createCaptureSession() {
+            self.captureSession = AVCaptureSession()
         }
-           
+        
+        func configureCaptureDevices() throws {
+            let session = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
+            guard let cameras = (session.devices.compactMap{$0}), !cameras.isEmpty else { throw CameraControllerError.noCamerasAvailable }
+
+            for camera in cameras {
+                if camera.position == .front {
+                    self.frontCamera = camera
+                }
+
+                if camera.position == .back {
+                    self.rearCamera = camera
+
+                    try camera.lockForConfiguration()
+                    camera.focusMode = .continuousAutoFocus
+                    camera.unlockForConfiguration()
+                }
+            }
+        }
+        func configureDeviceInputs() throws { }
+        func configurePhotoOutput() throws { }
+        
         DispatchQueue(label: "prepare").async {
+            do {
+                createCaptureSession()
+                try configureCaptureDevices()
+                try configureDeviceInputs()
+                try configurePhotoOutput()
+            }
+                
+            catch {
+                DispatchQueue.main.async {
+                    completionHandler(error)
+                }
+                
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completionHandler(nil)
+            }
+        }
+    }
+           
+        /*DispatchQueue(label: "prepare").async {
             do {
                 createCaptureSession()
                 try configureCaptureDevices()
@@ -73,7 +129,7 @@ class CameraController: NSObject{
                 completionHandler(nil)
             }
         }
-    }
+    }*/
     
     func displayPreview(on view: UIView) throws {
         guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
